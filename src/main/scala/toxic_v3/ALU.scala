@@ -3,6 +3,24 @@ package toxic_v3
 import chisel3._
 import chisel3.util._
 
+/*
+Instructions which uses ALU:
+	* ADD: 	out = tos + ntos
+	* NAND: out = ~(tos & ntos)
+	* LS:	out = tos << 1 
+	* RS: 	out = tos >> 1
+	* P0: 	out = 0
+	* P1: 	out = 1
+	* DUP: 	out = tos
+	* CMP:	out[3] = 0
+	*		out[2] = tos < ntos
+	* 		out[1] = tos > ntos
+	* 		out[0] = tos == ntos
+
+	! LS and RS does not take ntos as parameter
+	! It only shifts by one place
+*/
+
 class ALU extends Module {
 	val io = IO(new Bundle {
 		val opcode        = Input(UInt(3.W))
@@ -36,7 +54,6 @@ class ALU extends Module {
 			io.out := 1.U
 		} .elsewhen(io.opcode(1, 0) === 2.U(2.W)){
 			// CMP
-			// FIXME
 			io.out := Cat(0.U(1.W), (io.tos < io.ntos).asUInt, (io.tos > io.ntos).asUInt, (io.tos === io.ntos).asUInt)
 		} .otherwise {
 			// DUP

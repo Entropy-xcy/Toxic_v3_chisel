@@ -91,6 +91,8 @@ class ALUPeekPokeTester(c: ALU) extends PeekPokeTester(c) {
 	expect(c.io.out, "b0100".U)
 }
 
+
+// Executor
 class ALUSpec extends FlatSpec with Matchers {
     chisel3.iotesters.Driver.execute(Array("--backend-name", "verilator", "--is-verbose"), () => new ALU) { c =>
     	new ALUPeekPokeTester(c)
