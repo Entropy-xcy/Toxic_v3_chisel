@@ -10,14 +10,36 @@ class StackPeekPokeTester(c: Stack) extends PeekPokeTester(c) {
     poke(c.io.push_data, 3)
     poke(c.io.pop_en, 0)
 	step(1)
-
     poke(c.io.push_en, 1)
     poke(c.io.push_data, 4)
     poke(c.io.pop_en, 0)
+
+    expect(c.io.tos, 3)
+
+    
     step(1)
 
 	expect(c.io.tos, 4)
     expect(c.io.ntos, 3)
+
+    poke(c.io.push_en, 1)
+    poke(c.io.push_data, 3)
+    poke(c.io.pop_en, 1)
+
+    expect(c.io.tos, 4)
+
+    step(1)
+
+    expect(c.io.tos, 3)
+    expect(c.io.ntos, 3)
+
+    poke(c.io.push_en, 0)
+    poke(c.io.push_data, 3)
+    poke(c.io.pop_en, 1)
+
+    step(1)
+    expect(c.io.tos, 3)
+    expect(c.io.ntos, 0)
 }
 
 

@@ -15,7 +15,7 @@ class DecodePeekPokeTester(c: Decode) extends PeekPokeTester(c) {
 
 // Executor
 class DecodeSpec extends FlatSpec with Matchers {
-    chisel3.iotesters.Driver.execute(Array("--backend-name", "verilator", "--is-verbose"), () => new Decode(4)) { c =>
+    chisel3.iotesters.Driver.execute(Array("--backend-name", "verilator", "--is-verbose"), () => new Decode) { c =>
     	new DecodePeekPokeTester(c)
     } should be(true)
 }

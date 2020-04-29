@@ -20,7 +20,7 @@ class Stack(addr_width: Int) extends Module {
 
     when(io.pop_en === 1.U & io.push_en ===1.U){
         // replace tos with push_data
-        stack(sp) := io.push_data
+        stack(sp - 1.U) := io.push_data
     } .elsewhen(io.pop_en === 0.U & io.push_en === 1.U){
         // push push_data to stack
         sp := sp + 1.U

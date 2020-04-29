@@ -10,5 +10,8 @@ PCTest:
 DecodeTest:
 	sbt 'testOnly toxic_v3.DecodeSpec'
 
+CoreTest:
+	sbt 'testOnly toxic_v3.CoreSpec'
+
 clean:
 	rm -rf test_run_dir/*

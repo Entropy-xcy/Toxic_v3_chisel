@@ -3,7 +3,7 @@ package toxic_v3
 import chisel3._
 import chisel3.util._
 
-class Decode(addr_width: Int) extends Module {
+class Decode extends Module {
 	val io = IO(new Bundle {
 		val ins           = Input(UInt(4.W))
 
