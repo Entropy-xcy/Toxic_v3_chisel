@@ -27,10 +27,10 @@ class PC() extends Module {
 
     // handle branch
     when(io.branch_en.asBool){
+        shift := 0.U
         when(io.branch_cond === io.tos(0)){
             // branch taken
             pc_next := io.pc_addr + shift
-            shift := 0.U
         }
     }
 }

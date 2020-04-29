@@ -27,7 +27,7 @@ class Decode extends Module {
     io.push_en := io.ins(3) === 0.U | is_get
 
     // Handle pop_en
-    io.pop_en := io.ins === 7.U | io.ins === 6.U | io.ins === 13.U | io.ins === 15.U | io.ins === 9.U
+    io.pop_en := io.ins === 7.U | io.ins === 6.U | io.ins === 13.U | io.ins === 9.U
 
     // Handle sh_en
     io.sh_en := io.ins === 9.U
